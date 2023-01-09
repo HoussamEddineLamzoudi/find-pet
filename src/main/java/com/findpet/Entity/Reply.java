@@ -22,13 +22,14 @@ public class Reply {
     @Column(columnDefinition="TEXT")
     private String replyBody;
 
+//    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @ManyToOne
     @JoinColumn(name = "comment_id", nullable = false)
     private Comment comment;
 
-//    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    @JoinColumn(name = "comment_id",insertable = false,updatable = false)
-//    private Comment comment;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
 
     @Override

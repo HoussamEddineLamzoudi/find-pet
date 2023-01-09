@@ -47,6 +47,16 @@ public class User {
     @ToString.Exclude
     private List<AdoptionOffer> adoptionOffers = new ArrayList<>();
 
+    @OneToMany (targetEntity = Comment.class, mappedBy = "user")
+    @ToString.Exclude
+    private List<Comment> comments = new ArrayList<>();
+
+    @OneToMany (targetEntity = Reply.class, mappedBy = "user")
+    @ToString.Exclude
+    private List<Reply> replies = new ArrayList<>();
+
+
+
 
     @Override
     public boolean equals(Object o) {

@@ -29,10 +29,12 @@ public class Comment {
     private AdoptionOffer adoptionOffer;
 
 //    @OneToMany (targetEntity = Reply.class, mappedBy = "comment", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    private List<Reply> replies = new ArrayList<>();
-
     @OneToMany(mappedBy = "comment", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Reply> replies = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Override
     public boolean equals(Object o) {
