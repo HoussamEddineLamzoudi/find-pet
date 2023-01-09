@@ -1,6 +1,7 @@
 package com.findpet.Controller;
 
 
+import com.findpet.Dto.AdoptionOfferDto;
 import com.findpet.Entity.AdoptionOffer;
 import com.findpet.Request.AdoptionOfferRequest;
 import com.findpet.Services.AdoptionOfferService;
@@ -36,7 +37,8 @@ public class AdoptionOfferController {
 
 
     @GetMapping
-    public List<AdoptionOffer> getAll(){
+    public List<AdoptionOfferDto> getAll(){
+
         return adoptionOfferService.getAllAdoptionOffers();
     }
 }

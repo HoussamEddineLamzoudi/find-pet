@@ -1,5 +1,6 @@
 package com.findpet.Services;
 
+import com.findpet.Dto.AdoptionOfferDto;
 import com.findpet.Entity.AdoptionOffer;
 import com.findpet.Entity.Pet;
 import com.findpet.Entity.User;
@@ -51,7 +52,16 @@ public class AdoptionOfferService {
         return adoptionOfferRepository.findById(adoptionOfferId).get();
     }
 
-    public List<AdoptionOffer> getAllAdoptionOffers() {
-        return adoptionOfferRepository.findAll();
+    public List<AdoptionOfferDto> getAllAdoptionOffers() {
+        List<AdoptionOffer> adoptionOfferList = adoptionOfferRepository.findAll();
+        List<AdoptionOfferDto> adoptionOfferDtoList = new ArrayList<>();
+
+        for (AdoptionOffer adoptionOffer : adoptionOfferList) {
+            AdoptionOfferDto adoptionOfferDto = new AdoptionOfferDto();
+            BeanUtils.copyProperties(adoptionOffer, adoptionOfferDto);
+            adoptionOfferDtoList.add(adoptionOfferDto);
+        }
+
+        return adoptionOfferDtoList;
     }
 }
