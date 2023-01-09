@@ -21,10 +21,10 @@ public class PetController {
     @PostMapping
     public ResponseEntity<String> addPet(@RequestBody PetRequest petRequest){
 
-        System.out.println("controller  ".repeat(10));
-        PetDto petDto = petService.savePet(petRequest);
-        System.out.println("controller  ".repeat(10));
-        System.out.println(petDto);
-        return ResponseEntity.ok(petDto.getPetName()+" added");
+        if(petService.savePet(petRequest)!=null){
+            return ResponseEntity.ok("pet added successfully");
+        }else {
+            return ResponseEntity.ok("pet error");
+        }
     }
 }

@@ -1,7 +1,6 @@
 package com.findpet.Services;
 
 
-import com.findpet.Dto.CommentDto;
 import com.findpet.Entity.AdoptionOffer;
 import com.findpet.Entity.Comment;
 import com.findpet.Entity.User;
@@ -21,7 +20,7 @@ public class CommentService {
     @Autowired
     AdoptionOfferService adoptionOfferService;
 
-    public CommentDto saveComment(CommentRequest commentRequest) {
+    public Comment saveComment(CommentRequest commentRequest) {
 
         // Fill the Comment entity by request
         Comment comment = new Comment();
@@ -37,10 +36,8 @@ public class CommentService {
         //save the new comment in DB
         Comment newComment = commentRepository.save(comment);
 
-        //fill the commentDao by newComment information needed
-        CommentDto commentDto = new CommentDto();
-        BeanUtils.copyProperties(newComment,commentDto);
-        return commentDto;
+
+        return newComment;
     }
 
     public Comment getComment(Integer commentId) {

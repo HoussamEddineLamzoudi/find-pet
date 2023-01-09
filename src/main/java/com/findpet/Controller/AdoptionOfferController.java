@@ -21,8 +21,11 @@ public class AdoptionOfferController {
     @PostMapping
     public ResponseEntity<String> addAdoptionOffer(@RequestBody AdoptionOfferRequest adoptionOfferRequest){
 
-        System.out.println("-".repeat(10)+"  AdoptionOfferController");
-        AdoptionOfferDto adoptionOfferDto = adoptionOfferService.saveAdoptionOffer(adoptionOfferRequest);
-        return ResponseEntity.ok(adoptionOfferDto.getTitle());
+
+        if(adoptionOfferService.saveAdoptionOffer(adoptionOfferRequest)!=null){
+            return ResponseEntity.ok("adopption offer added successfully");
+        }else {
+            return ResponseEntity.ok("adopption offer error");
+        }
     }
 }

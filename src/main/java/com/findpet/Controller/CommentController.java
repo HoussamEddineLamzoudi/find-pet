@@ -21,7 +21,10 @@ public class CommentController {
     @PostMapping
     public ResponseEntity<String> addComment(@RequestBody CommentRequest commentRequest){
 
-        CommentDto commentDto = commentService.saveComment(commentRequest);
-        return ResponseEntity.ok(commentDto.getCommentBody());
+        if(commentService.saveComment(commentRequest)!=null){
+            return ResponseEntity.ok("Comment added successfully");
+        }else {
+            return ResponseEntity.ok("Comment error");
+        }
     }
 }

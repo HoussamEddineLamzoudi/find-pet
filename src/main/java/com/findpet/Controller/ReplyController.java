@@ -21,7 +21,10 @@ public class ReplyController {
     @PostMapping
     public ResponseEntity<String> addComment(@RequestBody ReplyRequest replyRequest){
 
-        ReplyDto replyDto = replyService.saveReply(replyRequest);
-        return ResponseEntity.ok(replyDto.getReplyBody());
+        if(replyService.saveReply(replyRequest)!=null){
+            return ResponseEntity.ok("reply added successfully");
+        }else {
+            return ResponseEntity.ok("reply error");
+        }
     }
 }

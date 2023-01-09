@@ -1,15 +1,10 @@
 package com.findpet.Services;
 
 
-import com.findpet.Dto.CommentDto;
-import com.findpet.Dto.ReplyDto;
-import com.findpet.Entity.AdoptionOffer;
 import com.findpet.Entity.Comment;
 import com.findpet.Entity.Reply;
 import com.findpet.Entity.User;
-import com.findpet.Repository.CommentRepository;
 import com.findpet.Repository.ReplyRepository;
-import com.findpet.Request.CommentRequest;
 import com.findpet.Request.ReplyRequest;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +19,7 @@ public class ReplyService {
     @Autowired
     CommentService commentService;
 
-    public ReplyDto saveReply(ReplyRequest replyRequest) {
+    public Reply saveReply(ReplyRequest replyRequest) {
 
         // Fill the Reply entity by request
         Reply reply = new Reply();
@@ -40,9 +35,6 @@ public class ReplyService {
         //save the new reply in DB
         Reply newReply = replyRepository.save(reply);
 
-        //fill the replyDao by newReply information needed
-        ReplyDto replyDto = new ReplyDto();
-        BeanUtils.copyProperties(newReply,replyDto);
-        return replyDto;
+        return newReply;
     }
 }

@@ -1,18 +1,15 @@
 package com.findpet.Services;
 
-import com.findpet.Dto.AdoptionOfferDto;
 import com.findpet.Entity.AdoptionOffer;
 import com.findpet.Entity.Pet;
 import com.findpet.Entity.User;
 import com.findpet.Repository.AdoptionOfferRepository;
 import com.findpet.Request.AdoptionOfferRequest;
-import jakarta.persistence.Access;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -25,7 +22,8 @@ public class AdoptionOfferService {
     @Autowired
     PetService petService;
 
-    public AdoptionOfferDto saveAdoptionOffer(AdoptionOfferRequest adoptionOfferRequest) {
+
+    public AdoptionOffer saveAdoptionOffer(AdoptionOfferRequest adoptionOfferRequest) {
 
         // Fill the adoption offer entity by request
         AdoptionOffer adoptionOffer = new AdoptionOffer();
@@ -46,10 +44,7 @@ public class AdoptionOfferService {
         //save the new adoption offer in DB
         AdoptionOffer newAdoptionOffer = adoptionOfferRepository.save(adoptionOffer);
 
-        //fill the adoptionOfferDao by newAdoptionOffer information needed
-        AdoptionOfferDto adoptionOfferDto = new AdoptionOfferDto();
-        BeanUtils.copyProperties(newAdoptionOffer,adoptionOfferDto);
-        return adoptionOfferDto;
+        return newAdoptionOffer;
     }
 
     public AdoptionOffer getAdoptionOffer(Integer adoptionOfferId) {
