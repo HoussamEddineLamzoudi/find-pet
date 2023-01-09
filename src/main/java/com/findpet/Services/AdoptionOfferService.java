@@ -51,4 +51,8 @@ public class AdoptionOfferService {
         BeanUtils.copyProperties(newAdoptionOffer,adoptionOfferDto);
         return adoptionOfferDto;
     }
+
+    public AdoptionOffer getAdoptionOffer(Integer adoptionOfferId) {
+        return adoptionOfferRepository.findById(adoptionOfferId).get();
+    }
 }

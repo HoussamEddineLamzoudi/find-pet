@@ -1,6 +1,7 @@
 package com.findpet.Controller;
 
 
+import com.findpet.Dto.CommentDto;
 import com.findpet.Request.CommentRequest;
 import com.findpet.Services.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class CommentController {
     @PostMapping
     public ResponseEntity<String> addComment(@RequestBody CommentRequest commentRequest){
 
-        commentService.saveComment(commentRequest);
-        return ResponseEntity.ok("");
+        CommentDto commentDto = commentService.saveComment(commentRequest);
+        return ResponseEntity.ok(commentDto.getCommentBody());
     }
 }
