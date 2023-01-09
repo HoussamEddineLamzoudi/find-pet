@@ -50,4 +50,8 @@ public class AdoptionOfferService {
     public AdoptionOffer getAdoptionOffer(Integer adoptionOfferId) {
         return adoptionOfferRepository.findById(adoptionOfferId).get();
     }
+
+    public List<AdoptionOffer> getAllAdoptionOffers() {
+        return adoptionOfferRepository.findAll();
+    }
 }
