@@ -28,7 +28,7 @@ public class AdoptionOffer {
     private Float price ;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToMany
@@ -41,6 +41,7 @@ public class AdoptionOffer {
     @OneToMany (targetEntity = Comment.class, mappedBy = "adoptionOffer")
     @ToString.Exclude
     private List<Comment> comments = new ArrayList<>();
+
 
     @Override
     public boolean equals(Object o) {

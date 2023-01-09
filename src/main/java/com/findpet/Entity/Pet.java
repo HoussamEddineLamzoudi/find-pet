@@ -33,20 +33,22 @@ public class Pet {
     @Column(nullable = false)
     private Integer owner;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+//    @ManyToOne
+//    @JoinColumn(name = "user_id")
+//    private User user;
 
     @ManyToMany
     @JoinTable (name = "T_pet_adopters",
             joinColumns = @JoinColumn(name = "pet_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
+    @ToString.Exclude
     private List<User> users = new ArrayList<>();
 
     @ManyToMany
     @JoinTable (name = "T_pet_offers",
             joinColumns = @JoinColumn(name = "pet_id"),
             inverseJoinColumns = @JoinColumn(name = "offer_id"))
+    @ToString.Exclude
     private List<AdoptionOffer> adoptionOffers = new ArrayList<>();
 
 

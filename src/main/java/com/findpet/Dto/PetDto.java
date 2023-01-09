@@ -8,6 +8,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class PetDao {
+public class PetDto {
     private String petName;
 }

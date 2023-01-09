@@ -1,7 +1,8 @@
 package com.findpet.Controller;
 
 
-import com.findpet.Dto.PetDao;
+import com.findpet.Dto.PetDto;
+import com.findpet.Entity.Pet;
 import com.findpet.Request.PetRequest;
 import com.findpet.Services.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,10 @@ public class PetController {
     @PostMapping
     public ResponseEntity<String> addPet(@RequestBody PetRequest petRequest){
 
-        PetDao petDao = petService.savePet(petRequest);
-        return ResponseEntity.ok(petDao.getPetName()+" added");
+        System.out.println("controller  ".repeat(10));
+        PetDto petDto = petService.savePet(petRequest);
+        System.out.println("controller  ".repeat(10));
+        System.out.println(petDto);
+        return ResponseEntity.ok(petDto.getPetName()+" added");
     }
 }
