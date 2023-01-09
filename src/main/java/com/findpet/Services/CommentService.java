@@ -42,4 +42,8 @@ public class CommentService {
         BeanUtils.copyProperties(newComment,commentDto);
         return commentDto;
     }
+
+    public Comment getComment(Integer commentId) {
+        return commentRepository.findById(commentId).get();
+    }
 }
