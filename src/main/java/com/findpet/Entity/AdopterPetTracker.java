@@ -27,7 +27,7 @@ public class AdopterPetTracker {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "opet_id")
+    @JoinColumn(name = "pet_id")
     private Pet pet;
 
     private LocalDate startDate;

@@ -17,11 +17,11 @@ public class FeedBack {
     @Column(name = "feedBack_id")
     private Integer id;
 
-    private Integer feedBackRaiting;
+    private Integer Raiting;
 
-    private String feedBackBody;
+    private String Body;
 
-    private Integer feedBackCreator;
+    private Integer Creator;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

@@ -28,9 +28,7 @@ public class PetService {
         BeanUtils.copyProperties(petRequest, pet);
 
         User user = userService.getUser(petRequest.getOwner());
-        List<User> users = new ArrayList<>();
-        users.add(user);
-        pet.setUsers(users);
+        pet.setUser(user);
 
         Pet newPet = petRepository.save(pet);
 

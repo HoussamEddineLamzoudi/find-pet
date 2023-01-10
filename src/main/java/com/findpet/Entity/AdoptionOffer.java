@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.Hibernate;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -20,11 +21,19 @@ public class AdoptionOffer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "offer_id")
+
     private Integer id;
+
     private String title ;
+
     private String description;
+
     private String city;
+
+    private LocalDate startDate;
+
     private Integer daysNumber = 1;
+
     private Float price ;
 
     @ManyToOne

@@ -2,18 +2,18 @@ services:
   db:
     container_name: Mysql
     image: mysql
-    restart: always
+#    restart: always
     environment:
       MYSQL_ROOT_PASSWORD : 123456
       MYSQL_DATABASE: findpet
     volumes:
-      - dbvolumes:/var/lib/mysql
+      - dbVolumes:/var/lib/mysql
     ports:
       - 3308:3306
 
   phpmyadmin:
     image: phpmyadmin
-    restart: always
+#    restart: always
     ports:
       - 8800:80
     environment:
@@ -24,4 +24,4 @@ services:
     depends_on:
       - db
 volumes:
-  dbvolumes:
+  dbVolumes:
