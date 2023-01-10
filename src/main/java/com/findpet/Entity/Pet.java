@@ -30,19 +30,19 @@ public class Pet {
     @Column(columnDefinition="TEXT")
     private String pictures;
 
-    @Column(nullable = false)
-    private Integer owner;
+//    @Column(nullable = false)
+//    private Integer owner;
 
-//    @ManyToOne
-//    @JoinColumn(name = "user_id")
-//    private User user;
+    @ManyToOne
+    @JoinColumn(name = "owner_id")
+    private User user;
 
-    @ManyToMany
-    @JoinTable (name = "T_pet_adopters",
-            joinColumns = @JoinColumn(name = "pet_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id"))
-    @ToString.Exclude
-    private List<User> users = new ArrayList<>();
+//    @ManyToMany
+//    @JoinTable (name = "T_pet_adopters",
+//            joinColumns = @JoinColumn(name = "pet_id"),
+//            inverseJoinColumns = @JoinColumn(name = "user_id"))
+//    @ToString.Exclude
+//    private List<User> users = new ArrayList<>();
 
     @ManyToMany
     @JoinTable (name = "T_pet_offers",

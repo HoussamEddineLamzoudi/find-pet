@@ -38,10 +38,14 @@ public class User {
 
     private Integer animalsAdoptedNumber = 0;
 
-    @ManyToMany
-    @JoinTable (name = "T_pet_adopters",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "pet_id"))
+//    @ManyToMany
+//    @JoinTable (name = "T_pet_adopters",
+//            joinColumns = @JoinColumn(name = "user_id"),
+//            inverseJoinColumns = @JoinColumn(name = "pet_id"))
+//    @ToString.Exclude
+//    private List<Pet> pets = new ArrayList<>();
+
+    @OneToMany (targetEntity = Pet.class, mappedBy = "user")
     @ToString.Exclude
     private List<Pet> pets = new ArrayList<>();
 
