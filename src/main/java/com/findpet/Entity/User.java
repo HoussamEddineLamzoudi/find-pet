@@ -57,6 +57,10 @@ public class User {
     @ToString.Exclude
     private List<Reply> replies = new ArrayList<>();
 
+    @OneToMany (targetEntity = FeedBack.class, mappedBy = "user")
+    @ToString.Exclude
+    private List<FeedBack> feedBacks = new ArrayList<>();
+
 
 
     @Override
