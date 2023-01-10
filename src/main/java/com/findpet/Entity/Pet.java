@@ -51,6 +51,10 @@ public class Pet {
     @ToString.Exclude
     private List<AdoptionOffer> adoptionOffers = new ArrayList<>();
 
+    @OneToMany (targetEntity = AdopterPetTracker.class, mappedBy = "pet")
+    @ToString.Exclude
+    private List<AdopterPetTracker> adopters = new ArrayList<>();
+
 
     @Override
     public boolean equals(Object o) {

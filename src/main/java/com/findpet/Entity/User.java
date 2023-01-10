@@ -65,6 +65,10 @@ public class User {
     @ToString.Exclude
     private List<FeedBack> feedBacks = new ArrayList<>();
 
+    @OneToMany (targetEntity = AdopterPetTracker.class, mappedBy = "user")
+    @ToString.Exclude
+    private List<AdopterPetTracker> adoptedPets = new ArrayList<>();
+
 
 
     @Override
