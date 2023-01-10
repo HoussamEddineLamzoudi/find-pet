@@ -36,6 +36,8 @@ public class User {
     @Column(columnDefinition="TEXT")
     private String picture;
 
+    private Integer animalsAdoptedNumber = 0;
+
     @ManyToMany
     @JoinTable (name = "T_pet_adopters",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -54,7 +56,6 @@ public class User {
     @OneToMany (targetEntity = Reply.class, mappedBy = "user")
     @ToString.Exclude
     private List<Reply> replies = new ArrayList<>();
-
 
 
 
