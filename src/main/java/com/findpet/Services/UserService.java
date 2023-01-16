@@ -15,4 +15,9 @@ public class UserService {
     public User getUser(Integer owner) {
         return userRepository.findById(owner).get();
     }
+
+    public User findUserByEmail(String email) {
+
+        return userRepository.findByEmail(email);
+    }
 }
