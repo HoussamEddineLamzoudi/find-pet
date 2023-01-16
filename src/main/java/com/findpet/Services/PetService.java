@@ -1,6 +1,9 @@
 package com.findpet.Services;
 
 
+import com.findpet.Dto.AdoptionOfferDto;
+import com.findpet.Dto.PetDto;
+import com.findpet.Entity.AdoptionOffer;
 import com.findpet.Entity.Pet;
 import com.findpet.Entity.User;
 import com.findpet.Repository.PetRepository;
@@ -35,7 +38,21 @@ public class PetService {
         return newPet;
     }
 
+
     public Pet findPet(int petId) {
         return petRepository.findById(petId).get();
+    }
+
+    public List<PetDto> getAllPetsForOneUser(Integer userId) {
+        User user = userService.getUser(userId);
+        List<Pet> petList = petRepository.findByUser(user);
+        List<PetDto> petDtoList = new ArrayList<>();
+
+        for (Pet pet : petList) {
+            PetDto petDto= new PetDto();
+            BeanUtils.copyProperties(pet, petDto);
+            petDtoList.add(petDto);
+        }
+        return petDtoList;
     }
 }

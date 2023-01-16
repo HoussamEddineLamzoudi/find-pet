@@ -1,7 +1,11 @@
 package com.findpet.Services;
 
 import com.findpet.Dto.AdoptionOfferDto;
+import com.findpet.Dto.CommentDto;
+import com.findpet.Dto.PetDto;
+import com.findpet.Dto.UserDto;
 import com.findpet.Entity.AdoptionOffer;
+import com.findpet.Entity.Comment;
 import com.findpet.Entity.Pet;
 import com.findpet.Entity.User;
 import com.findpet.Repository.AdoptionOfferRepository;
@@ -52,13 +56,51 @@ public class AdoptionOfferService {
         return adoptionOfferRepository.findById(adoptionOfferId).get();
     }
 
+    //§§§§§§§§§§§§§ complit it
     public List<AdoptionOfferDto> getAllAdoptionOffers() {
+
+
+        System.out.println("gett all services");
+        System.out.println("-".repeat(30));
         List<AdoptionOffer> adoptionOfferList = adoptionOfferRepository.findAll();
         List<AdoptionOfferDto> adoptionOfferDtoList = new ArrayList<>();
 
         for (AdoptionOffer adoptionOffer : adoptionOfferList) {
             AdoptionOfferDto adoptionOfferDto = new AdoptionOfferDto();
             BeanUtils.copyProperties(adoptionOffer, adoptionOfferDto);
+
+            UserDto userDto = new UserDto();
+            BeanUtils.copyProperties(adoptionOffer.getUser(), userDto);
+
+            List<Comment> commentList = adoptionOffer.getComments();
+            List<CommentDto> commentDtoList = new ArrayList<>();
+
+            for (Comment comment : commentList) {
+                CommentDto commentDto = new CommentDto();
+                BeanUtils.copyProperties(comment, commentDto);
+
+                UserDto userDto1 = new UserDto();
+                BeanUtils.copyProperties(comment.getUser(), userDto1);
+                commentDto.setUserDto(userDto1);
+
+                commentDtoList.add(commentDto);
+            }
+
+            List<Pet> petList = adoptionOffer.getPets();
+            List<PetDto> petDtoList = new ArrayList<>();
+
+            for (Pet pet : petList) {
+                PetDto petDto = new PetDto();
+                BeanUtils.copyProperties(pet, petDto);
+
+                petDtoList.add(petDto);
+            }
+
+
+            adoptionOfferDto.setUserDto(userDto);
+            adoptionOfferDto.setPetList(petDtoList);
+            adoptionOfferDto.setCommentList(commentDtoList);
+
             adoptionOfferDtoList.add(adoptionOfferDto);
         }
 

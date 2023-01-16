@@ -21,7 +21,6 @@ public class AdoptionOffer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "offer_id")
-
     private Integer id;
 
     private String title ;

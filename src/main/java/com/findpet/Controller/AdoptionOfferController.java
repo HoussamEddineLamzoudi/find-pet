@@ -39,6 +39,8 @@ public class AdoptionOfferController {
     @GetMapping
     public List<AdoptionOfferDto> getAll(){
 
-        return adoptionOfferService.getAllAdoptionOffers();
+        System.out.println("gztt zll");
+        List<AdoptionOfferDto> adoptionOfferDtoList = adoptionOfferService.getAllAdoptionOffers();
+        return adoptionOfferDtoList;
     }
 }
