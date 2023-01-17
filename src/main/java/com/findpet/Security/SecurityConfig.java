@@ -43,9 +43,9 @@ public class SecurityConfig {
         System.out.println("hi we are in securityFilterChain ^_^");
         httpSecurity
                 .csrf().disable()
+                .cors().and()
                 .authorizeHttpRequests()
                 .requestMatchers("/api/v1/auth/**","/hello").permitAll()
-//                .requestMatchers("/api/v1/admin/**").hasAnyAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement()
